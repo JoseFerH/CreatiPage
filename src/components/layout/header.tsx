@@ -19,7 +19,7 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-header-background/95 backdrop-blur supports-[backdrop-filter]:bg-header-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-header-background">
       <div className="container flex h-16 max-w-7xl items-center justify-between text-header-foreground">
         <Link href="/" className="mr-6 flex items-center space-x-2">
           <Logo className="text-primary" />
