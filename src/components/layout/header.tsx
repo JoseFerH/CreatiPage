@@ -29,7 +29,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="transition-colors hover:text-header-foreground/80 text-header-foreground/60"
+              className="transition-colors text-[rgb(182,215,242)] hover:text-white"
             >
               {link.label}
             </Link>
