@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export function Hero() {
   return (
-    <section className="relative w-full h-screen flex items-center justify-center text-center bg-gradient-to-r from-white to-[#B6D7F2] overflow-hidden">
+    <section className="relative w-full h-screen flex items-center justify-center text-center bg-gradient-to-r from-white to-[#B6D7F2] overflow-hidden pt-24">
       <div className="relative z-10 container mx-auto px-4 max-w-4xl">
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 leading-tight text-[#121B52] font-headline">
           Tu marca de invisible a inolvidable.
