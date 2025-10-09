@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 const navLinks = [
   { href: "#about", label: "Sobre Nosotros" },
@@ -17,10 +18,37 @@ const navLinks = [
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const controlNavbar = () => {
+      if (typeof window !== 'undefined') {
+        if (window.scrollY > lastScrollY && window.scrollY > 100) { // if scroll down hide the navbar
+          setVisible(false);
+        } else { // if scroll up show the navbar
+          setVisible(true);
+        }
+        setLastScrollY(window.scrollY);
+      }
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', controlNavbar);
+      return () => {
+        window.removeEventListener('scroll', controlNavbar);
+      };
+    }
+  }, [lastScrollY]);
+
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-header-background">
-      <div className="container flex h-16 max-w-7xl items-center justify-between text-header-foreground">
+    <header className={cn(
+        "fixed top-4 inset-x-0 z-50 w-full max-w-5xl mx-auto rounded-full shadow-lg transition-transform duration-300 ease-in-out",
+        "border-border/40 bg-header-background",
+        visible ? "translate-y-0" : "-translate-y-24"
+      )}>
+      <div className="container flex h-16 items-center justify-between text-header-foreground px-6">
         <Link href="/" className="mr-6 flex items-center space-x-2">
           <Image src="/assets/creatisvg.svg" alt="Creati Logo" width={120} height={30} />
         </Link>
@@ -63,7 +91,7 @@ export function Header() {
                       key={link.href}
                       href={link.href}
                       onClick={() => setIsOpen(false)}
-                      className="font-medium text-foreground/80 hover:text-primary"
+                      className="font-medium text-[rgb(182,215,242)] hover:text-primary"
                     >
                       {link.label}
                     </Link>
