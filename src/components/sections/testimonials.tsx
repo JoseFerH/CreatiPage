@@ -1,0 +1,80 @@
+"use client";
+
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+const testimonials = [
+  {
+    name: "Marcela G.",
+    title: "Emprendedora",
+    quote: "Después de trabajar con Creati, mis ventas aumentaron y por fin me siento orgullosa de cómo se ve mi negocio.",
+    avatar: "https://picsum.photos/seed/avatar1/100/100",
+  },
+  {
+    name: "Javier P.",
+    title: "CEO de TechNova",
+    quote: "El proceso fue transparente y los resultados superaron nuestras expectativas. Nuestra presencia digital nunca fue tan sólida.",
+    avatar: "https://picsum.photos/seed/avatar2/100/100",
+  },
+  {
+    name: "Sofía L.",
+    title: "Diseñadora de Modas",
+    quote: "Entendieron la esencia de mi marca a la perfección. Ahora mi identidad visual cuenta la historia que siempre quise.",
+    avatar: "https://picsum.photos/seed/avatar3/100/100",
+  },
+];
+
+export function Testimonials() {
+  return (
+    <section id="testimonials" className="py-16 md:py-24 bg-card">
+      <div className="container mx-auto max-w-7xl px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold font-headline">Historias de Éxito</h2>
+          <p className="text-lg text-muted-foreground mt-2">
+            La confianza de nuestros clientes es nuestro mayor logro.
+          </p>
+        </div>
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full max-w-5xl mx-auto"
+        >
+          <CarouselContent>
+            {testimonials.map((testimonial, index) => (
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                <div className="p-1 h-full">
+                  <Card className="h-full flex flex-col justify-between shadow-sm">
+                    <CardContent className="p-6 flex flex-col gap-4">
+                      <p className="text-muted-foreground italic flex-grow">"{testimonial.quote}"</p>
+                      <div className="flex items-center gap-4 pt-4 border-t mt-4">
+                        <Avatar>
+                          <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
+                          <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                        </Avatar>
+                        <div>
+                          <p className="font-semibold">{testimonial.name}</p>
+                          <p className="text-sm text-muted-foreground">{testimonial.title}</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="hidden xl:inline-flex" />
+          <CarouselNext className="hidden xl:inline-flex" />
+        </Carousel>
+      </div>
+    </section>
+  );
+}

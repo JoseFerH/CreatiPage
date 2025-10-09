@@ -1,3 +1,52 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-background",
+      "description": "Abstract background for hero section",
+      "imageUrl": "https://picsum.photos/seed/creatihero/1920/1080",
+      "imageHint": "abstract background"
+    },
+    {
+      "id": "about-us-image",
+      "description": "Team collaborating in a modern office",
+      "imageUrl": "https://picsum.photos/seed/creatiabout/600/800",
+      "imageHint": "team collaboration"
+    },
+    {
+      "id": "portfolio-before-1",
+      "description": "Before image for portfolio item 1",
+      "imageUrl": "https://picsum.photos/seed/creati1/600/400",
+      "imageHint": "old design"
+    },
+    {
+      "id": "portfolio-after-1",
+      "description": "After image for portfolio item 1",
+      "imageUrl": "https://picsum.photos/seed/creati2/600/400",
+      "imageHint": "modern design"
+    },
+    {
+      "id": "portfolio-before-2",
+      "description": "Before image for portfolio item 2",
+      "imageUrl": "https://picsum.photos/seed/creati3/600/400",
+      "imageHint": "outdated branding"
+    },
+    {
+      "id": "portfolio-after-2",
+      "description": "After image for portfolio item 2",
+      "imageUrl": "https://picsum.photos/seed/creati4/600/400",
+      "imageHint": "sleek branding"
+    },
+    {
+      "id": "portfolio-before-3",
+      "description": "Before image for portfolio item 3",
+      "imageUrl": "https://picsum.photos/seed/creati5/600/400",
+      "imageHint": "cluttered website"
+    },
+    {
+      "id": "portfolio-after-3",
+      "description": "After image for portfolio item 3",
+      "imageUrl": "https://picsum.photos/seed/creati6/600/400",
+      "imageHint": "clean website"
+    }
+  ]
 }
