@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
@@ -12,7 +14,7 @@ export function Hero() {
           En Creati, diseñamos tu identidad visual, estructuramos tu negocio y proyectamos tu esencia para que crezcas con propósito. Diseño con estrategia. Marca con alma.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button asChild size="lg" variant="outline">
+          <Button asChild size="lg" className="bg-[#B6D7F2] text-[#121B52] hover:bg-[#121B52] hover:text-[#B6D7F2]">
             <Link href="#services">Conocé nuestros servicios</Link>
           </Button>
           <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
