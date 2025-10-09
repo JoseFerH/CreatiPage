@@ -36,9 +36,6 @@ export function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <Button asChild className="hidden md:flex" variant="outline">
-            <Link href="#quiz">Diagnóstico de Marca</Link>
-          </Button>
           <Button asChild className="hidden md:flex bg-accent hover:bg-accent/90 text-accent-foreground">
              <Link href="#contact">Agendar Asesoría</Link>
           </Button>
@@ -71,10 +68,7 @@ export function Header() {
                       {link.label}
                     </Link>
                   ))}
-                  <Button asChild variant="outline" className="mt-4">
-                     <Link href="#quiz" onClick={() => setIsOpen(false)}>Diagnóstico de Marca</Link>
-                  </Button>
-                   <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
+                   <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground mt-4">
                      <Link href="#contact" onClick={() => setIsOpen(false)}>Agendar Asesoría</Link>
                    </Button>
                 </nav>
