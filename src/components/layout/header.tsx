@@ -64,7 +64,7 @@ export function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <Button asChild className="hidden md:flex bg-accent hover:bg-accent/90 text-accent-foreground">
+          <Button asChild className="hidden md:flex bg-[#B6D7F2] text-[#121B52] hover:bg-[#121B52] hover:text-[#B6D7F2]">
              <Link href="#contact">Agendar Asesoría</Link>
           </Button>
           <Sheet open={isOpen} onOpenChange={setIsOpen}>

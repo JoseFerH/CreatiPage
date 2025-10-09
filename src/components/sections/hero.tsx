@@ -15,10 +15,10 @@ export function Hero() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button asChild size="lg" className="bg-[#B6D7F2] text-[#121B52] hover:bg-[#121B52] hover:text-[#B6D7F2]">
-            <Link href="#services">Conocé nuestros servicios</Link>
+            <Link href="#services">Conoce nuestros servicios</Link>
           </Button>
           <Button asChild size="lg" className="bg-[#121B52] text-[#B6D7F2] hover:bg-[#B6D7F2] hover:text-[#121B52]">
-            <Link href="#contact">Agendá tu asesoría inicial</Link>
+            <Link href="#contact">Agenda tu asesoría inicial</Link>
           </Button>
         </div>
       </div>
