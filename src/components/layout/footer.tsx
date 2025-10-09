@@ -1,6 +1,6 @@
 import { Github, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
-import { Logo } from "@/components/logo";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -9,7 +9,7 @@ export function Footer() {
         <div className="flex flex-col items-center justify-between md:flex-row gap-8">
           <div className="flex flex-col items-center md:items-start gap-4">
             <Link href="/">
-              <Logo className="text-primary" />
+              <Image src="/assets/creatisvg.svg" alt="Creati Logo" width={120} height={30} />
             </Link>
             <p className="max-w-xs text-center md:text-left text-sm text-muted-foreground">
               Tu marca de invisible a inolvidable.

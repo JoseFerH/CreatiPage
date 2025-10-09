@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Logo } from "@/components/logo";
+import Image from "next/image";
 
 const navLinks = [
   { href: "#about", label: "Sobre Nosotros" },
@@ -22,7 +22,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-header-background">
       <div className="container flex h-16 max-w-7xl items-center justify-between text-header-foreground">
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          <Logo className="text-primary" />
+          <Image src="/assets/creatisvg.svg" alt="Creati Logo" width={120} height={30} />
         </Link>
         <nav className="hidden md:flex md:items-center md:gap-6 text-sm font-medium">
           {navLinks.map((link) => (
@@ -50,7 +50,7 @@ export function Header() {
               <div className="flex flex-col h-full">
                 <div className="flex justify-between items-center p-4 border-b">
                    <Link href="/" onClick={() => setIsOpen(false)}>
-                      <Logo className="text-primary" />
+                      <Image src="/assets/creatisvg.svg" alt="Creati Logo" width={120} height={30} />
                    </Link>
                    <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
                       <X className="h-6 w-6" />
