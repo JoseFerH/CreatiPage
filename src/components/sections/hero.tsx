@@ -8,7 +8,7 @@ export function Hero() {
     <section className="relative w-full h-screen flex items-center justify-center text-center bg-gradient-to-r from-white to-[#B6D7F2] overflow-hidden">
       <div className="relative z-10 container mx-auto px-4 max-w-4xl">
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 leading-tight text-[#121B52] font-headline">
-          Tu marca de <span className="transition-opacity duration-300 hover:opacity-0">invisible</span> a inolvidable.
+          Tu marca de <span className="transition-opacity duration-300 hover:opacity-0">invisible</span> a <span className="relative inline-block after:content-[''] after:absolute after:w-0 after:h-1 after:block after:bg-[#121B52] after:transition-all after:duration-300 after:ease-in-out hover:after:w-full after:left-0 after:bottom-0">inolvidable.</span>
         </h1>
         <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-[#121B52]/80">
           En Creati, diseñamos tu identidad visual, estructuramos tu negocio y proyectamos tu esencia para que crezcas con propósito. Diseño con estrategia. Marca con alma.
