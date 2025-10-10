@@ -69,7 +69,7 @@ export function Header() {
           </Button>
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon">
+              <Button size="icon" className="bg-[#121B52] text-[#B6D7F2] hover:bg-[#B6D7F2] hover:text-[#121B52]">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Abrir menú</span>
               </Button>
@@ -91,7 +91,7 @@ export function Header() {
                       key={link.href}
                       href={link.href}
                       onClick={() => setIsOpen(false)}
-                      className="font-medium text-[rgb(182,215,242)] hover:text-primary"
+                      className="font-medium text-[rgb(18,27,82)] hover:text-primary"
                     >
                       {link.label}
                     </Link>
