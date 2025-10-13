@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -44,7 +44,7 @@ export function Header() {
 
   return (
     <header className={cn(
-        "fixed top-4 inset-x-0 z-50 w-full max-w-5xl mx-auto rounded-full shadow-lg transition-transform duration-300 ease-in-out",
+        "fixed inset-x-0 z-50 w-full max-w-5xl mx-auto rounded-full shadow-lg transition-transform duration-300 ease-in-out",
         "border-border/40 bg-header-background",
         visible ? "translate-y-0" : "-translate-y-24"
       )}>
@@ -75,16 +75,19 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <SheetHeader className="p-4 border-b">
+                 <SheetTitle className="sr-only">Menú de Navegación</SheetTitle>
+                 <div className="flex justify-between items-center">
+                    <Link href="/" onClick={() => setIsOpen(false)}>
+                       <Image src="/assets/creatisvg.svg" alt="Creati Logo" width={120} height={30} />
+                    </Link>
+                    <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
+                       <X className="h-6 w-6" />
+                       <span className="sr-only">Cerrar menú</span>
+                    </Button>
+                 </div>
+              </SheetHeader>
               <div className="flex flex-col h-full">
-                <div className="flex justify-between items-center p-4 border-b">
-                   <Link href="/" onClick={() => setIsOpen(false)}>
-                      <Image src="/assets/creatisvg.svg" alt="Creati Logo" width={120} height={30} />
-                   </Link>
-                   <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
-                      <X className="h-6 w-6" />
-                      <span className="sr-only">Cerrar menú</span>
-                   </Button>
-                </div>
                 <nav className="flex flex-col gap-4 p-4 text-lg">
                   {navLinks.map((link) => (
                     <Link
