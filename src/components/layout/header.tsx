@@ -44,12 +44,12 @@ export function Header() {
 
   return (
     <header className={cn(
-        "fixed inset-x-0 z-50 w-full max-w-5xl mx-auto rounded-full shadow-lg transition-transform duration-300 ease-in-out",
+        "fixed inset-x-0 top-4 z-50 w-full max-w-5xl mx-auto rounded-full shadow-lg transition-transform duration-300 ease-in-out",
         "border-border/40 bg-header-background",
         visible ? "translate-y-0" : "-translate-y-24"
       )}>
       <div className="container flex h-16 items-center justify-between text-header-foreground px-6">
-        <Link href="/" className="mr-6 flex items-center space-x-2">
+        <Link href="/" className="mr-6 flex items-center space-x-2 transition-transform duration-300 hover:scale-105">
           <Image src="/assets/creatisvg.svg" alt="Creati Logo" width={120} height={30} />
         </Link>
         <nav className="hidden md:flex md:items-center md:gap-6 text-sm font-medium">
@@ -78,7 +78,7 @@ export function Header() {
               <SheetHeader className="p-4 border-b">
                  <SheetTitle className="sr-only">Menú de Navegación</SheetTitle>
                  <div className="flex justify-between items-center">
-                    <Link href="/" onClick={() => setIsOpen(false)}>
+                    <Link href="/" onClick={() => setIsOpen(false)} className="transition-transform duration-300 hover:scale-105">
                        <Image src="/assets/creatisvg.svg" alt="Creati Logo" width={120} height={30} />
                     </Link>
                     <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>

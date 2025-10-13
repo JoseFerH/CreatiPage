@@ -8,7 +8,7 @@ export function Footer() {
       <div className="container mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-between md:flex-row gap-8">
           <div className="flex flex-col items-center md:items-start gap-4">
-            <Link href="/">
+            <Link href="/" className="transition-transform duration-300 hover:scale-105">
               <Image src="/assets/creatisvg.svg" alt="Creati Logo" width={120} height={30} />
             </Link>
             <p className="max-w-xs text-center md:text-left text-sm text-muted-foreground">
