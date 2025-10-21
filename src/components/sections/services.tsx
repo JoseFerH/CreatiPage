@@ -5,22 +5,22 @@ import Link from "next/link";
 
 const services = [
   {
-    icon: <Palette className="w-10 h-10 text-primary-foreground" />,
+    icon: <Palette className="w-10 h-10 text-primary" />,
     title: "Identidad de marca",
     description: "Logo, naming, paleta, storytelling. Tu marca no comienza con un logo, sino con una historia visual que impacta.",
   },
   {
-    icon: <MonitorSmartphone className="w-10 h-10 text-primary-foreground" />,
+    icon: <MonitorSmartphone className="w-10 h-10 text-primary" />,
     title: "Presencia digital",
     description: "Web responsive, tienda online, apps. Tu página web es tu carta de presentación: debe proyectar profesionalismo y vender.",
   },
   {
-    icon: <Megaphone className="w-10 h-10 text-primary-foreground" />,
+    icon: <Megaphone className="w-10 h-10 text-primary" />,
     title: "Marketing visual",
     description: "“Diseños que detienen el scroll, generan conexión y posicionan tu marca.”",
   },
   {
-    icon: <CandlestickChart className="w-10 h-10 text-primary-foreground" />,
+    icon: <CandlestickChart className="w-10 h-10 text-primary" />,
     title: "Finanzas estratégicas",
     description: "“Diseñamos para que tu negocio no solo se vea bien, sino que sea rentable.”",
   },
@@ -36,7 +36,7 @@ export function Services() {
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="text-left flex flex-col h-full hover:shadow-lg transition-shadow duration-300 bg-white text-primary-foreground">
+            <Card key={index} className="text-left flex flex-col h-full hover:shadow-lg transition-shadow duration-300 bg-white text-primary">
               <CardHeader>
                 {service.icon}
                 <CardTitle className="pt-4 font-headline text-primary">{service.title}</CardTitle>
@@ -48,10 +48,10 @@ export function Services() {
           ))}
         </div>
         <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
-          <Button asChild size="lg" className="bg-white text-primary-foreground hover:bg-gray-200">
+          <Button asChild size="lg" className="bg-white text-primary hover:bg-gray-200">
             <Link href="#contact">Solicitá tu paquete ideal</Link>
           </Button>
-          <Button asChild size="lg" className="bg-primary-foreground text-primary-foreground hover:bg-primary-foreground/90">
+          <Button asChild size="lg" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90">
             <Link href="#contact">Hablemos de tu marca</Link>
           </Button>
         </div>
