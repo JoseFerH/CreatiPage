@@ -88,33 +88,33 @@ export function QuizForm() {
 
   if (isLoading) {
     return (
-      <div className="text-center p-8 flex flex-col items-center justify-center gap-4 bg-background rounded-lg shadow-inner min-h-[300px]">
-        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+      <div className="text-center p-8 flex flex-col items-center justify-center gap-4 bg-white rounded-lg shadow-inner min-h-[300px]">
+        <Loader2 className="h-12 w-12 animate-spin text-accent-foreground" />
         <h3 className="text-xl font-semibold">Analizando tus respuestas...</h3>
-        <p className="text-muted-foreground">Estamos preparando tu recomendación personalizada.</p>
+        <p>Estamos preparando tu recomendación personalizada.</p>
       </div>
     );
   }
   
   if (result) {
     return (
-      <Card className="text-center p-6 sm:p-8 bg-background shadow-lg animate-in fade-in-50">
+      <Card className="text-center p-6 sm:p-8 bg-white shadow-lg animate-in fade-in-50 text-accent-foreground">
         <CardHeader>
-          <Wand2 className="mx-auto h-12 w-12 text-accent mb-4" />
+          <Wand2 className="mx-auto h-12 w-12 text-accent-foreground mb-4" />
           <CardTitle className="text-2xl font-headline">¡Tu diagnóstico está listo!</CardTitle>
-          <CardDescription>Basado en tus respuestas, esto es lo que tu marca necesita:</CardDescription>
+          <CardDescription className="text-accent-foreground/80">Basado en tus respuestas, esto es lo que tu marca necesita:</CardDescription>
         </CardHeader>
         <CardContent>
-          <ul className="space-y-2 text-lg font-semibold text-primary mb-8">
+          <ul className="space-y-2 text-lg font-semibold mb-8">
             {result.recommendations.map((rec, i) => (
               <li key={i}>{rec}</li>
             ))}
           </ul>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
+            <Button asChild size="lg" className="bg-accent-foreground text-accent hover:bg-accent-foreground/90">
               <Link href="#contact">Agendar Asesoría Gratis</Link>
             </Button>
-            <Button asChild size="lg" variant="outline">
+            <Button asChild size="lg" variant="outline" className="bg-white text-accent-foreground border-accent-foreground hover:bg-accent-foreground/10">
               <Link href="#services">Explorar Servicios</Link>
             </Button>
           </div>
@@ -127,7 +127,7 @@ export function QuizForm() {
   
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-4 sm:p-6 border rounded-lg">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-4 sm:p-6 border rounded-lg bg-white text-accent-foreground">
         <Progress value={((step + 1) / questions.length) * 100} className="mb-8" />
         
         <FormField
@@ -143,9 +143,9 @@ export function QuizForm() {
                   className="flex flex-col space-y-2 pt-4"
                 >
                   {currentQuestion.options.map((option) => (
-                    <FormItem key={option} className="flex items-center space-x-3 space-y-0 p-3 rounded-lg border border-transparent hover:border-primary transition-colors">
+                    <FormItem key={option} className="flex items-center space-x-3 space-y-0 p-3 rounded-lg border border-transparent hover:border-accent-foreground transition-colors">
                       <FormControl>
-                         <RadioGroupItem value={option} />
+                         <RadioGroupItem value={option} className="border-accent-foreground text-accent-foreground" />
                       </FormControl>
                       <FormLabel className="font-normal text-base cursor-pointer flex-1">{option}</FormLabel>
                     </FormItem>
@@ -161,11 +161,11 @@ export function QuizForm() {
           <Button type="button" variant="ghost" onClick={() => setStep(step - 1)} disabled={step === 0}>Anterior</Button>
           
           {step < questions.length - 1 ? (
-            <Button type="button" onClick={handleNext}>
+            <Button type="button" onClick={handleNext} className="bg-accent-foreground text-accent hover:bg-accent-foreground/90">
               Siguiente <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           ) : (
-            <Button type="submit" className="bg-accent hover:bg-accent/90 text-accent-foreground">
+            <Button type="submit" className="bg-accent-foreground text-accent hover:bg-accent-foreground/90">
               <Sparkles className="mr-2 h-4 w-4" />
               Obtener mi recomendación
             </Button>

@@ -33,11 +33,11 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="py-16 md:py-24 bg-card">
+    <section id="testimonials" className="py-16 md:py-24 bg-gradient-to-r from-white to-primary-foreground text-primary">
       <div className="container mx-auto max-w-7xl px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold font-headline">Historias de Éxito</h2>
-          <p className="text-lg text-muted-foreground mt-2">
+          <p className="text-lg mt-2">
             La confianza de nuestros clientes es nuestro mayor logro.
           </p>
         </div>
@@ -52,17 +52,17 @@ export function Testimonials() {
             {testimonials.map((testimonial, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                 <div className="p-1 h-full">
-                  <Card className="h-full flex flex-col justify-between shadow-sm">
+                  <Card className="h-full flex flex-col justify-between shadow-sm bg-white text-primary-foreground">
                     <CardContent className="p-6 flex flex-col gap-4">
-                      <p className="text-muted-foreground italic flex-grow">"{testimonial.quote}"</p>
-                      <div className="flex items-center gap-4 pt-4 border-t mt-4">
+                      <p className="italic flex-grow text-primary">"{testimonial.quote}"</p>
+                      <div className="flex items-center gap-4 pt-4 border-t mt-4 border-primary-foreground/20">
                         <Avatar>
                           <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
                           <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
                         </Avatar>
                         <div>
-                          <p className="font-semibold">{testimonial.name}</p>
-                          <p className="text-sm text-muted-foreground">{testimonial.title}</p>
+                          <p className="font-semibold text-primary">{testimonial.name}</p>
+                          <p className="text-sm text-primary/80">{testimonial.title}</p>
                         </div>
                       </div>
                     </CardContent>
@@ -71,8 +71,8 @@ export function Testimonials() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hidden xl:inline-flex" />
-          <CarouselNext className="hidden xl:inline-flex" />
+          <CarouselPrevious className="hidden xl:inline-flex text-primary-foreground bg-white border-primary-foreground" />
+          <CarouselNext className="hidden xl:inline-flex text-primary-foreground bg-white border-primary-foreground" />
         </Carousel>
       </div>
     </section>

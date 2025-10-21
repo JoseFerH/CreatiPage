@@ -42,12 +42,12 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-card">
+    <section id="contact" className="py-16 md:py-24 bg-gradient-to-r from-white to-primary-foreground text-primary">
       <div className="container mx-auto max-w-7xl px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4 font-headline">Contanos tu visión.</h2>
-            <p className="text-lg text-muted-foreground mb-6">
+            <p className="text-lg mb-6">
               Nosotros la transformamos en marca. Porque cada gran negocio comienza con una conversación.
             </p>
             <Button asChild className="bg-[#25D366] hover:bg-[#128C7E] text-white text-lg px-8 py-6">
@@ -57,7 +57,7 @@ export function Contact() {
               </a>
             </Button>
           </div>
-          <Card className="p-6 sm:p-8 shadow-lg">
+          <Card className="p-6 sm:p-8 shadow-lg bg-white text-primary">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField
@@ -66,7 +66,7 @@ export function Contact() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Nombre</FormLabel>
-                      <FormControl><Input placeholder="Tu nombre" {...field} /></FormControl>
+                      <FormControl><Input placeholder="Tu nombre" {...field} className="bg-primary-foreground/20 text-primary placeholder:text-primary/60" /></FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -77,7 +77,7 @@ export function Contact() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Email</FormLabel>
-                      <FormControl><Input placeholder="tu@email.com" type="email" {...field} /></FormControl>
+                      <FormControl><Input placeholder="tu@email.com" type="email" {...field} className="bg-primary-foreground/20 text-primary placeholder:text-primary/60" /></FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -88,12 +88,12 @@ export function Contact() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Mensaje</FormLabel>
-                      <FormControl><Textarea placeholder="Contanos sobre tu proyecto..." {...field} rows={4} /></FormControl>
+                      <FormControl><Textarea placeholder="Contanos sobre tu proyecto..." {...field} rows={4} className="bg-primary-foreground/20 text-primary placeholder:text-primary/60" /></FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-                <Button type="submit" disabled={form.formState.isSubmitting} className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
+                <Button type="submit" disabled={form.formState.isSubmitting} className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                   {form.formState.isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                   Enviar Mensaje
                 </Button>

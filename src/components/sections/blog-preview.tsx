@@ -28,7 +28,7 @@ const articles = {
 
 export function BlogPreview() {
   return (
-    <section id="blog" className="py-16 md:py-24">
+    <section id="blog" className="py-16 md:py-24 bg-white text-primary">
       <div className="container mx-auto max-w-7xl px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold font-headline">Recursos para crecer</h2>
@@ -37,7 +37,7 @@ export function BlogPreview() {
           </p>
         </div>
         <Tabs defaultValue="blog" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8 h-auto">
+          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8 h-auto bg-primary-foreground/20 text-primary">
             <TabsTrigger value="blog">Blog</TabsTrigger>
             <TabsTrigger value="finanzas">Finanzas</TabsTrigger>
             <TabsTrigger value="marketing">Marketing</TabsTrigger>
@@ -47,7 +47,7 @@ export function BlogPreview() {
             <TabsContent key={category} value={category}>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {items.map((item, index) => (
-                  <Card key={index} className="flex flex-col hover:shadow-lg transition-shadow duration-300">
+                  <Card key={index} className="flex flex-col hover:shadow-lg transition-shadow duration-300 bg-white text-primary">
                     <CardHeader>
                       <CardTitle className="text-lg font-headline">{item.title}</CardTitle>
                     </CardHeader>
