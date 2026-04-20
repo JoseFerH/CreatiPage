@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -9,21 +10,34 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
-const testimonials = [
+type Testimonial = {
+  id?: string;
+  name: string;
+  title: string;
+  quote: string;
+  avatar: string;
+};
+
+const fallbackTestimonials: Testimonial[] = [
   {
+    id: "t1",
     name: "Marcela G.",
     title: "Emprendedora",
     quote: "Después de trabajar con Creati, mis ventas aumentaron y por fin me siento orgullosa de cómo se ve mi negocio.",
     avatar: "https://picsum.photos/seed/avatar1/100/100",
   },
   {
+    id: "t2",
     name: "Javier P.",
     title: "CEO de TechNova",
     quote: "El proceso fue transparente y los resultados superaron nuestras expectativas. Nuestra presencia digital nunca fue tan sólida.",
     avatar: "https://picsum.photos/seed/avatar2/100/100",
   },
   {
+    id: "t3",
     name: "Sofía L.",
     title: "Diseñadora de Modas",
     quote: "Entendieron la esencia de mi marca a la perfección. Ahora mi identidad visual cuenta la historia que siempre quise.",
@@ -32,6 +46,30 @@ const testimonials = [
 ];
 
 export function Testimonials() {
+  const [items, setItems] = useState<Testimonial[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchItems() {
+      try {
+        const querySnapshot = await getDocs(collection(db, "testimonials"));
+        const data: Testimonial[] = [];
+        querySnapshot.forEach((doc) => {
+          data.push({ id: doc.id, ...doc.data() } as Testimonial);
+        });
+        setItems(data);
+      } catch (error) {
+        console.error("Error fetching testimonials:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchItems();
+  }, []);
+
+  const displayItems = !loading && items.length > 0 ? items : fallbackTestimonials;
+
   return (
     <section id="testimonials" className="py-16 md:py-24 bg-gradient-to-r from-white to-primary-foreground text-primary">
       <div className="container mx-auto max-w-7xl px-4">
@@ -49,8 +87,8 @@ export function Testimonials() {
           className="w-full max-w-5xl mx-auto"
         >
           <CarouselContent>
-            {testimonials.map((testimonial, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+            {displayItems.map((testimonial, index) => (
+              <CarouselItem key={testimonial.id || index} className="md:basis-1/2 lg:basis-1/3">
                 <div className="p-1 h-full">
                   <Card className="h-full flex flex-col justify-between shadow-sm bg-white text-primary-foreground">
                     <CardContent className="p-6 flex flex-col gap-4">
