@@ -9,11 +9,11 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "#about", label: "Sobre Nosotros" },
-  { href: "#services", label: "Servicios" },
-  { href: "#portfolio", label: "Portafolio" },
-  { href: "#blog", label: "Blog" },
-  { href: "#contact", label: "Contacto" },
+  { href: "/#about", label: "Sobre Nosotros" },
+  { href: "/#services", label: "Servicios" },
+  { href: "/projects", label: "Portafolio" },
+  { href: "/#blog", label: "Blog" },
+  { href: "/#contact", label: "Contacto" },
 ];
 
 export function Header() {
