@@ -24,9 +24,9 @@ export function Header() {
   useEffect(() => {
     const controlNavbar = () => {
       if (typeof window !== 'undefined') {
-        if (window.scrollY > lastScrollY && window.scrollY > 100) { // if scroll down hide the navbar
+        if (window.scrollY > lastScrollY && window.scrollY > 100) {
           setVisible(false);
-        } else { // if scroll up show the navbar
+        } else {
           setVisible(true);
         }
         setLastScrollY(window.scrollY);
@@ -41,66 +41,64 @@ export function Header() {
     }
   }, [lastScrollY]);
 
-
   return (
     <header className={cn(
-        "fixed inset-x-0 top-4 z-50 w-full max-w-5xl mx-auto rounded-full shadow-lg transition-transform duration-300 ease-in-out",
-        "border-border/40 bg-header-background",
+        "fixed inset-x-0 top-4 z-50 w-full max-w-5xl mx-auto rounded-full shadow-sm transition-transform duration-300 ease-in-out border border-zinc-100 bg-white/95 backdrop-blur-md",
         visible ? "translate-y-0" : "-translate-y-24"
       )}>
-      <div className="container flex h-16 items-center justify-between text-header-foreground px-6">
+      <div className="container flex h-16 items-center justify-between px-6">
         <Link href="/" className="mr-6 flex items-center space-x-2 transition-transform duration-300 hover:scale-105">
           <Image src="/assets/creatisvg.svg" alt="Creati Logo" width={120} height={30} />
         </Link>
-        <nav className="hidden md:flex md:items-center md:gap-6 text-sm font-medium">
+        <nav className="hidden md:flex md:items-center md:gap-8 text-sm font-medium">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="transition-colors text-[rgb(182,215,242)] hover:text-white"
+              className="transition-colors text-zinc-600 hover:text-navy"
             >
               {link.label}
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-2">
-          <Button asChild className="hidden md:flex bg-[#B6D7F2] text-[#121B52] hover:bg-[#121B52] hover:text-[#B6D7F2]">
-             <Link href="#contact">Agendar Asesoría</Link>
+        <div className="flex items-center gap-4">
+          <Button asChild className="hidden md:flex bg-navy text-white hover:bg-navy/90 rounded-full px-6 transition-all duration-300 hover:shadow-md">
+             <Link href="#contact">Comenzar</Link>
           </Button>
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
-              <Button size="icon" className="bg-[#121B52] text-[#B6D7F2] hover:bg-[#B6D7F2] hover:text-[#121B52]">
+              <Button size="icon" variant="ghost" className="text-navy hover:bg-lightblue/20 rounded-full">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Abrir menú</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-              <SheetHeader className="p-4 border-b">
+            <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-white border-zinc-100">
+              <SheetHeader className="p-4 border-b border-zinc-50">
                  <SheetTitle className="sr-only">Menú de Navegación</SheetTitle>
                  <div className="flex justify-between items-center">
                     <Link href="/" onClick={() => setIsOpen(false)} className="transition-transform duration-300 hover:scale-105">
                        <Image src="/assets/creatisvg.svg" alt="Creati Logo" width={120} height={30} />
                     </Link>
-                    <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
+                    <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)} className="text-navy hover:bg-lightblue/20 rounded-full">
                        <X className="h-6 w-6" />
                        <span className="sr-only">Cerrar menú</span>
                     </Button>
                  </div>
               </SheetHeader>
-              <div className="flex flex-col h-full">
-                <nav className="flex flex-col gap-4 p-4 text-lg">
+              <div className="flex flex-col h-full bg-white">
+                <nav className="flex flex-col gap-6 p-6 text-lg">
                   {navLinks.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
                       onClick={() => setIsOpen(false)}
-                      className="font-medium text-[rgb(18,27,82)] hover:text-primary"
+                      className="font-medium text-zinc-600 hover:text-navy transition-colors"
                     >
                       {link.label}
                     </Link>
                   ))}
-                   <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground mt-4">
-                     <Link href="#contact" onClick={() => setIsOpen(false)}>Agendar Asesoría</Link>
+                   <Button asChild className="bg-navy hover:bg-navy/90 text-white mt-4 rounded-full py-6 transition-all duration-300 hover:shadow-md">
+                     <Link href="#contact" onClick={() => setIsOpen(false)}>Comenzar</Link>
                    </Button>
                 </nav>
               </div>

@@ -10,11 +10,18 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Inter', 'sans-serif'],
-        headline: ['Inter', 'sans-serif'],
+        body: ['var(--font-lato)', 'sans-serif'],
+        headline: ['var(--font-lato)', 'sans-serif'],
+        accent: ['var(--font-playfair)', 'serif'],
         code: ['monospace'],
       },
       colors: {
+        navy: {
+          DEFAULT: '#121B52',
+        },
+        lightblue: {
+          DEFAULT: '#B6D7F2',
+        },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         "header-background": "hsl(var(--header-background))",

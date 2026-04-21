@@ -11,12 +11,14 @@ const portfolioItems = [
 
 export function Portfolio() {
   return (
-    <section id="portfolio" className="py-16 md:py-24 bg-gradient-to-r from-white to-accent text-accent-foreground">
+    <section id="portfolio" className="py-24 md:py-32 bg-white">
       <div className="container mx-auto max-w-7xl px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-headline">Tu marca también puede brillar así.</h2>
-          <p className="text-lg mt-2">
-            Aquí te mostramos cómo lo logramos.
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-black mb-6 font-headline text-navy tracking-tight">
+            Nuestro <span className="font-accent italic text-lightblue font-normal">Trabajo</span>
+          </h2>
+          <p className="text-lg md:text-xl text-zinc-600 max-w-2xl mx-auto font-light leading-relaxed">
+            Tu marca también puede brillar así. Aquí te mostramos cómo lo logramos.
           </p>
         </div>
         <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
@@ -26,29 +28,30 @@ export function Portfolio() {
             if (!beforeImg || !afterImg) return null;
 
             return (
-              <Card key={item.id} className="overflow-hidden group shadow-lg bg-white text-accent-foreground">
-                <CardContent className="p-0 relative">
-                  <div className="relative aspect-[4/3]">
+              <Card key={item.id} className="overflow-hidden group shadow-none border-none bg-transparent cursor-pointer">
+                <CardContent className="p-0 relative rounded-2xl overflow-hidden shadow-xl">
+                  <div className="relative aspect-[4/3] w-full">
                     <Image
                       src={beforeImg.imageUrl}
                       alt={beforeImg.description}
                       fill
-                      className="object-cover transition-opacity duration-500 group-hover:opacity-0"
+                      className="object-cover transition-all duration-700 group-hover:scale-105 group-hover:opacity-0"
                       data-ai-hint={beforeImg.imageHint}
                     />
                     <Image
                       src={afterImg.imageUrl}
                       alt={afterImg.description}
                       fill
-                      className="object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                      className="object-cover opacity-0 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
                       data-ai-hint={afterImg.imageHint}
                     />
-                     <div className="absolute top-2 right-2 bg-white/80 px-2 py-1 rounded-full flex items-center gap-2 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200 text-accent-foreground">
-                      Antes <ArrowRight className="h-3 w-3" /> Después
+                     <div className="absolute top-4 right-4 bg-navy/90 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200 text-white shadow-lg tracking-wider uppercase">
+                      Antes <ArrowRight className="h-4 w-4 text-lightblue" /> Después
                     </div>
                   </div>
-                   <div className="p-4 bg-white">
-                    <h3 className="font-semibold text-lg">{item.title}</h3>
+                  {/* Overlay for title on hover */}
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/90 to-transparent p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                    <h3 className="font-bold text-xl text-white">{item.title}</h3>
                   </div>
                 </CardContent>
               </Card>
