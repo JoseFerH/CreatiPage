@@ -42,31 +42,39 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-gradient-to-r from-white to-primary-foreground text-primary">
+    <section id="contact" className="py-24 md:py-32 bg-white relative overflow-hidden">
+      {/* Decorative background element */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-lightblue/10 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3 pointer-events-none" />
+
       <div className="container mx-auto max-w-7xl px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-headline">Contanos tu visión.</h2>
-            <p className="text-lg mb-6">
+            <h2 className="text-3xl md:text-5xl font-black mb-6 font-headline text-navy tracking-tight">
+              Hablemos <span className="font-accent italic text-lightblue font-normal">Hoy</span>.
+            </h2>
+            <p className="text-lg md:text-xl mb-10 text-zinc-600 leading-relaxed font-light">
               Nosotros la transformamos en marca. Porque cada gran negocio comienza con una conversación.
             </p>
-            <Button asChild className="bg-[#25D366] hover:bg-[#128C7E] text-white text-lg px-8 py-6">
+            <Button asChild className="bg-[#25D366] hover:bg-[#128C7E] text-white text-base px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 duration-300">
               <a href="#" target="_blank" rel="noopener noreferrer">
-                <WhatsAppIcon className="mr-3 h-6 w-6" />
+                <WhatsAppIcon className="mr-2 h-5 w-5" />
                 Chateá por WhatsApp
               </a>
             </Button>
           </div>
-          <Card className="p-6 sm:p-8 shadow-lg bg-white text-primary">
+          <Card className="p-8 sm:p-10 shadow-2xl border-none bg-white rounded-3xl ring-1 ring-zinc-100 relative">
+            {/* Subtle card accent */}
+            <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-navy to-lightblue rounded-t-3xl" />
+
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 mt-2">
                 <FormField
                   control={form.control}
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Nombre</FormLabel>
-                      <FormControl><Input placeholder="Tu nombre" {...field} className="bg-primary-foreground/20 text-primary placeholder:text-primary/60" /></FormControl>
+                      <FormLabel className="text-navy font-bold text-sm uppercase tracking-wider">Nombre</FormLabel>
+                      <FormControl><Input placeholder="Tu nombre" {...field} className="bg-zinc-50/50 border-zinc-200 text-navy placeholder:text-zinc-400 focus-visible:ring-lightblue focus-visible:border-lightblue h-14 rounded-xl" /></FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -76,8 +84,8 @@ export function Contact() {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email</FormLabel>
-                      <FormControl><Input placeholder="tu@email.com" type="email" {...field} className="bg-primary-foreground/20 text-primary placeholder:text-primary/60" /></FormControl>
+                      <FormLabel className="text-navy font-bold text-sm uppercase tracking-wider">Email</FormLabel>
+                      <FormControl><Input placeholder="tu@email.com" type="email" {...field} className="bg-zinc-50/50 border-zinc-200 text-navy placeholder:text-zinc-400 focus-visible:ring-lightblue focus-visible:border-lightblue h-14 rounded-xl" /></FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -87,14 +95,14 @@ export function Contact() {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Mensaje</FormLabel>
-                      <FormControl><Textarea placeholder="Contanos sobre tu proyecto..." {...field} rows={4} className="bg-primary-foreground/20 text-primary placeholder:text-primary/60" /></FormControl>
+                      <FormLabel className="text-navy font-bold text-sm uppercase tracking-wider">Mensaje</FormLabel>
+                      <FormControl><Textarea placeholder="Contanos sobre tu proyecto..." {...field} rows={4} className="bg-zinc-50/50 border-zinc-200 text-navy placeholder:text-zinc-400 focus-visible:ring-lightblue focus-visible:border-lightblue resize-none p-4 rounded-xl" /></FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-                <Button type="submit" disabled={form.formState.isSubmitting} className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                  {form.formState.isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                <Button type="submit" disabled={form.formState.isSubmitting} className="w-full bg-navy text-white hover:bg-navy/90 h-14 text-lg rounded-xl mt-6 transition-all duration-300 hover:shadow-lg">
+                  {form.formState.isSubmitting && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}
                   Enviar Mensaje
                 </Button>
               </form>
