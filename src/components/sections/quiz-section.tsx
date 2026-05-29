@@ -1,18 +1,33 @@
 import { QuizForm } from "@/components/quiz-form";
-import { Lightbulb } from "lucide-react";
+import { Lightbulb, Sparkles } from "lucide-react";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 export function QuizSection() {
   return (
-    <section id="quiz" className="py-16 md:py-24 bg-gradient-to-r from-white to-accent text-accent-foreground">
-      <div className="container mx-auto max-w-3xl px-4">
-        <div className="text-center mb-12">
-          <Lightbulb className="mx-auto h-12 w-12 text-accent-foreground mb-4" />
-          <h2 className="text-3xl md:text-4xl font-bold mb-2 font-headline">¿Qué está frenando tu marca?</h2>
-          <p className="text-lg">
+    <section id="quiz" className="py-24 md:py-32 bg-[#121B52] text-white relative overflow-hidden">
+      {/* Decorative background blur */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#B6D7F2]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 animate-float-slow" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#F4DEC6]/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 animate-float-slower" />
+
+      <div className="container mx-auto max-w-4xl px-4 relative z-10">
+        <ScrollReveal direction="up" className="text-center mb-16">
+          <div className="inline-flex items-center justify-center p-3 bg-white/5 rounded-2xl mb-6 border border-white/10 relative group">
+            <Lightbulb className="h-8 w-8 text-[#F4DEC6] group-hover:scale-110 transition-transform duration-300" />
+            <Sparkles className="absolute -top-2 -right-2 h-5 w-5 text-[#B6D7F2] animate-pulse" />
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 font-headline tracking-tight">
+            ¿Qué está <span className="text-[#F4DEC6]">frenando</span> tu marca?
+          </h2>
+          <p className="text-lg md:text-xl text-[#B6D7F2]/80 max-w-2xl mx-auto font-medium">
             Completá este diagnóstico rápido de 4 preguntas para descubrir qué necesita tu marca para despegar.
           </p>
-        </div>
-        <QuizForm />
+        </ScrollReveal>
+        
+        <ScrollReveal direction="up" delay={200}>
+          <div className="bg-white rounded-3xl shadow-2xl p-1 md:p-2 border border-white/20">
+            <QuizForm />
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

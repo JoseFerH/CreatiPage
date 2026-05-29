@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Progress } from "@/components/ui/progress";
-import { Loader2, ArrowRight, Sparkles, Wand2 } from "lucide-react";
+import { Loader2, ArrowRight, ArrowLeft, Sparkles, Wand2, CheckCircle2 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import Link from "next/link";
 import { useToast } from "@/hooks/use-toast";
@@ -88,33 +88,43 @@ export function QuizForm() {
 
   if (isLoading) {
     return (
-      <div className="text-center p-8 flex flex-col items-center justify-center gap-4 bg-white rounded-lg shadow-inner min-h-[300px]">
-        <Loader2 className="h-12 w-12 animate-spin text-accent-foreground" />
-        <h3 className="text-xl font-semibold">Analizando tus respuestas...</h3>
-        <p>Estamos preparando tu recomendación personalizada.</p>
+      <div className="text-center p-12 flex flex-col items-center justify-center gap-6 bg-white rounded-3xl min-h-[400px]">
+        <div className="relative">
+          <div className="absolute inset-0 bg-[#B6D7F2] blur-xl rounded-full opacity-50 animate-pulse" />
+          <Loader2 className="h-16 w-16 animate-spin text-[#121B52] relative z-10" />
+        </div>
+        <div>
+          <h3 className="text-2xl font-bold font-headline text-[#121B52] mb-2">Analizando tus respuestas...</h3>
+          <p className="text-[#121B52]/70">Nuestra IA está preparando tu recomendación personalizada basada en la experiencia de Creati.</p>
+        </div>
       </div>
     );
   }
   
   if (result) {
     return (
-      <Card className="text-center p-6 sm:p-8 bg-white shadow-lg animate-in fade-in-50 text-accent-foreground">
-        <CardHeader>
-          <Wand2 className="mx-auto h-12 w-12 text-accent-foreground mb-4" />
-          <CardTitle className="text-2xl font-headline">¡Tu diagnóstico está listo!</CardTitle>
-          <CardDescription className="text-accent-foreground/80">Basado en tus respuestas, esto es lo que tu marca necesita:</CardDescription>
+      <Card className="text-center p-8 sm:p-12 bg-white border-none shadow-none text-[#121B52] rounded-3xl">
+        <CardHeader className="p-0 mb-8">
+          <div className="mx-auto bg-[#F4DEC6]/30 w-20 h-20 rounded-full flex items-center justify-center mb-6">
+            <Wand2 className="h-10 w-10 text-[#9B6F50]" />
+          </div>
+          <CardTitle className="text-3xl font-headline font-bold">¡Tu diagnóstico está listo!</CardTitle>
+          <CardDescription className="text-lg text-[#121B52]/70 mt-2">Basado en tus respuestas, esto es lo que tu marca necesita:</CardDescription>
         </CardHeader>
-        <CardContent>
-          <ul className="space-y-2 text-lg font-semibold mb-8">
+        <CardContent className="p-0">
+          <ul className="space-y-4 text-left max-w-2xl mx-auto mb-10">
             {result.recommendations.map((rec, i) => (
-              <li key={i}>{rec}</li>
+              <li key={i} className="flex items-start gap-4 bg-[#f8fbfe] p-4 rounded-xl border border-[#B6D7F2]/20">
+                <CheckCircle2 className="text-[#B6D7F2] h-6 w-6 shrink-0 mt-0.5" />
+                <span className="text-[#121B52]/90 font-medium leading-relaxed">{rec}</span>
+              </li>
             ))}
           </ul>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-accent-foreground text-accent hover:bg-accent-foreground/90">
+            <Button asChild size="lg" className="btn-press bg-[#121B52] text-[#B6D7F2] hover:bg-[#1a2766] rounded-full px-8">
               <Link href="#contact">Agendar Asesoría Gratis</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="bg-white text-accent-foreground border-accent-foreground hover:bg-accent-foreground/10">
+            <Button asChild size="lg" variant="outline" className="btn-press bg-white text-[#121B52] border-2 border-[#f0f4f8] hover:bg-[#f8fbfe] rounded-full px-8">
               <Link href="#services">Explorar Servicios</Link>
             </Button>
           </div>
@@ -127,47 +137,89 @@ export function QuizForm() {
   
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-4 sm:p-6 border rounded-lg bg-white text-accent-foreground">
-        <Progress value={((step + 1) / questions.length) * 100} className="mb-8" />
+      <form onSubmit={form.handleSubmit(onSubmit)} className="p-6 sm:p-10 bg-white rounded-3xl text-[#121B52]">
+        <div className="mb-8 flex items-center gap-4">
+          <div className="text-sm font-bold text-[#B6D7F2] w-16">
+            Paso {step + 1}/{questions.length}
+          </div>
+          <Progress value={((step + 1) / questions.length) * 100} className="h-2 bg-[#f0f4f8]" />
+        </div>
         
         <FormField
           control={form.control}
           name={currentQuestion.id}
           render={({ field }) => (
-            <FormItem className="space-y-3 min-h-[300px]">
-              <FormLabel className="text-xl font-semibold text-center block">{currentQuestion.label}</FormLabel>
+            <FormItem className="space-y-6 min-h-[300px]">
+              <FormLabel className="text-2xl sm:text-3xl font-bold font-headline text-center block mb-8">
+                {currentQuestion.label}
+              </FormLabel>
               <FormControl>
                 <RadioGroup
                   onValueChange={field.onChange}
                   defaultValue={field.value}
-                  className="flex flex-col space-y-2 pt-4"
+                  className="grid sm:grid-cols-2 gap-4"
                 >
-                  {currentQuestion.options.map((option) => (
-                    <FormItem key={option} className="flex items-center space-x-3 space-y-0 p-3 rounded-lg border border-transparent hover:border-accent-foreground transition-colors">
-                      <FormControl>
-                         <RadioGroupItem value={option} className="border-accent-foreground text-accent-foreground" />
-                      </FormControl>
-                      <FormLabel className="font-normal text-base cursor-pointer flex-1">{option}</FormLabel>
-                    </FormItem>
-                  ))}
+                  {currentQuestion.options.map((option) => {
+                    const isSelected = field.value === option;
+                    return (
+                      <FormItem 
+                        key={option} 
+                        className={`flex items-start space-x-0 space-y-0 p-4 sm:p-6 rounded-2xl border-2 transition-all duration-200 cursor-pointer ${
+                          isSelected 
+                            ? "border-[#121B52] bg-[#f8fbfe] shadow-sm" 
+                            : "border-[#f0f4f8] hover:border-[#B6D7F2]/50 hover:bg-[#f8fbfe]/50"
+                        }`}
+                        onClick={() => field.onChange(option)}
+                      >
+                        <FormControl>
+                           <RadioGroupItem value={option} className="sr-only" />
+                        </FormControl>
+                        <div className="flex items-start gap-4 w-full">
+                          <div className={`mt-0.5 w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
+                            isSelected ? "border-[#121B52]" : "border-[#B6D7F2]"
+                          }`}>
+                            {isSelected && <div className="w-2.5 h-2.5 rounded-full bg-[#121B52]" />}
+                          </div>
+                          <FormLabel className="font-medium text-lg cursor-pointer flex-1 leading-snug">
+                            {option}
+                          </FormLabel>
+                        </div>
+                      </FormItem>
+                    );
+                  })}
                 </RadioGroup>
               </FormControl>
-              <FormMessage className="text-center" />
+              <FormMessage className="text-center font-medium" />
             </FormItem>
           )}
         />
 
-        <div className="flex justify-between items-center pt-4 border-t">
-          <Button type="button" variant="ghost" onClick={() => setStep(step - 1)} disabled={step === 0}>Anterior</Button>
+        <div className="flex justify-between items-center pt-8 mt-4 border-t border-[#f0f4f8]">
+          <Button 
+            type="button" 
+            variant="ghost" 
+            onClick={() => setStep(step - 1)} 
+            disabled={step === 0}
+            className="text-[#121B52]/60 hover:text-[#121B52] hover:bg-[#f8fbfe] rounded-full btn-press"
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" /> Anterior
+          </Button>
           
           {step < questions.length - 1 ? (
-            <Button type="button" onClick={handleNext} className="bg-accent-foreground text-accent hover:bg-accent-foreground/90">
+            <Button 
+              type="button" 
+              onClick={handleNext} 
+              className="bg-[#121B52] text-[#B6D7F2] hover:bg-[#1a2766] rounded-full px-6 btn-press"
+            >
               Siguiente <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           ) : (
-            <Button type="submit" className="bg-accent-foreground text-accent hover:bg-accent-foreground/90">
+            <Button 
+              type="submit" 
+              className="bg-[#121B52] text-[#B6D7F2] hover:bg-[#1a2766] rounded-full px-6 btn-press"
+            >
               <Sparkles className="mr-2 h-4 w-4" />
-              Obtener mi recomendación
+              Obtener diagnóstico
             </Button>
           )}
         </div>

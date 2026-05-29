@@ -8,13 +8,14 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2 } from "lucide-react";
+import { Loader2, Send } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 // Inline SVG for WhatsApp icon
 const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M16.75 13.96c.25.13.43.2.5.28.08.08.16.18.23.28.07.1.13.2.18.33.05.1.08.2.1.33.03.12.03.25.02.38-.02.13-.05.25-.1.38-.05.12-.1.23-.18.33-.08.1-.16.18-.25.25-.1.08-.2.14-.3.2-.1.07-.2.12-.33.16-.12.04-.25.07-.38.08-.13.02-.25.02-.38.02-.12 0-.24-.02-.36-.03-.12-.02-.24-.05-.36-.08-.1-.03-.2-.07-.3-.13-.1-.05-.18-.1-.26-.18-.08-.08-.15-.15-.22-.23-.07-.08-.13-.16-.18-.24-.05-.08-.1-.16-.14-.24-.04-.08-.08-.16-.1-.25-.03-.1-.05-.2-.07-.3-.02-.1-.03-.2-.03-.3s0-.2.02-.3c0-.02 0-.03.02-.05.38-.87.63-1.8.74-2.75.08-.6.03-1.2-.14-1.8-.1-.35-.25-.7-.43-1.03-.18-.32-.4-.6-.66-.87-.27-.26-.57-.5-.9-.7-.33-.2-.7-.38-1.08-.5-.38-.14-.78-.2-1.18-.2-.13 0-.25.02-.38.03-.13.02-.25.04-.38.07-.12.03-.24.06-.36.1-.12.04-.23.08-.34.13-.1.05-.2.1-.3.16-.1.06-.2.12-.28.2-.08.08-.16.15-.23.23-.07.08-.14.16-.2.24-.06.08-.1.17-.15.25-.05.08-.1.17-.13.26-.03.1-.06.2-.08.3-.02.1-.03.2-.04.3-.02.12-.02.25-.02.38.02.13.04.25.07.38.03.12.07.24.1.36.04.12.08.23.13.34.05.1.1.2.16.3.06.1.12.2.2.28.08.08.15.16.23.23.5.52 1.1.93 1.76 1.26.28.14.58.26.88.35.3.1.6.15.92.18.32.03.64.03.95 0 .6-.05 1.2-.2 1.73-.44.5-.24.94-.56 1.32-.95.38-.4.7-.86.94-1.36.23-.5.38-1.04.44-1.6.05-.55.02-1.1-.1-1.63s-.4-1-.7-1.4c-.1-.14-.2-.28-.33-.4s-.26-.23-.4-.32z"/>
+    <path d="M16.75 13.96c.25.13.43.2.5.28.08.08.16.18.23.28.07.1.13.2.18.33.05.1.08.2.1.33.03.12.03.25.02.38-.02.13-.05.25-.1.38-.05.12-.1.23-.18.33-.08.1-.16.18-.25.25-.1.08-.2.14-.3.2-.1.07-.2.12-.33.16-.12.04-.25.07-.38.08-.13.02-.25.02-.38.02-.12 0-.24-.02-.36-.03-.12-.02-.24-.05-.36-.08-.1-.03-.2-.07-.3-.13-.1-.05-.18-.1-.26-.18-.08-.08-.15-.15-.22-.23-.07-.08-.13-.16-.18-.24-.05-.08-.1-.16-.14-.24-.04-.08-.08-.16-.1-.25-.03-.1-.05-.2-.07-.3-.02-.1-.03-.2-.03-.3s0-.2.02-.3c0-.02 0-.03.02-.05.38-.87.63-1.8.74-2.75.08-.6.03-1.2-.14-1.8-.1-.35-.25-.7-.43-1.03-.18-.32-.4-.6-.66-.87-.27-.26-.57-.5-.9-.7-.33-.2-.7-.38-1.08-.5-.38-.14-.78-.2-1.18-.2-.13 0-.25.02-.38.03-.13.02-.25.04-.38.07-.12.03-.24.06-.36.1-.12.04-.23.08-.34.13-.1.05-.2.1-.3.16-.1.06-.2.12-.28.2-.08.08-.15.16.23.23-.07.08-.14.16-.2.24-.06.08-.1.17-.15.25-.05.08-.1.17-.13.26-.03.1-.06.2-.08.3-.02.1-.03.2-.04.3-.02.12-.02.25-.02.38.02.13.04.25.07.38.03.12.07.24.1.36.04.12.08.23.13.34.05.1.1.2.16.3.06.1.12.2.2.28.08.08.15.16.23.23.5.52 1.1.93 1.76 1.26.28.14.58.26.88.35.3.1.6.15.92.18.32.03.64.03.95 0 .6-.05 1.2-.2 1.73-.44.5-.24.94-.56 1.32-.95.38-.4.7-.86.94-1.36.23-.5.38-1.04.44-1.6.05-.55.02-1.1-.1-1.63s-.4-1-.7-1.4c-.1-.14-.2-.28-.33-.4s-.26-.23-.4-.32z"/>
   </svg>
 );
 
@@ -42,64 +43,116 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-gradient-to-r from-white to-primary-foreground text-primary">
+    <section id="contact" className="py-24 md:py-32 bg-white text-[#121B52]">
       <div className="container mx-auto max-w-7xl px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-headline">Contanos tu visión.</h2>
-            <p className="text-lg mb-6">
-              Nosotros la transformamos en marca. Porque cada gran negocio comienza con una conversación.
-            </p>
-            <Button asChild className="bg-[#25D366] hover:bg-[#128C7E] text-white text-lg px-8 py-6">
-              <a href="#" target="_blank" rel="noopener noreferrer">
-                <WhatsAppIcon className="mr-3 h-6 w-6" />
-                Chateá por WhatsApp
-              </a>
-            </Button>
+            <ScrollReveal direction="right">
+              <h2 className="text-3xl md:text-5xl font-bold mb-6 font-headline tracking-tight">
+                Contanos tu <span className="text-[#9B6F50]">visión.</span>
+              </h2>
+            </ScrollReveal>
+            <ScrollReveal direction="right" delay={150}>
+              <p className="text-lg md:text-xl mb-10 text-[#121B52]/70 leading-relaxed font-medium">
+                Nosotros la transformamos en marca. Porque cada gran negocio comienza con una conversación. Hablemos de cómo podemos ayudarte a crecer.
+              </p>
+            </ScrollReveal>
+            
+            <ScrollReveal direction="right" delay={300}>
+              <Button asChild className="btn-press bg-[#25D366] hover:bg-[#128C7E] text-white text-lg px-8 py-7 rounded-2xl w-full sm:w-auto shadow-lg shadow-[#25D366]/20 group">
+                <a href="#" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+                  <WhatsAppIcon className="mr-3 h-7 w-7 group-hover:scale-110 transition-transform duration-300" />
+                  Chateá por WhatsApp
+                </a>
+              </Button>
+              <div className="mt-6 flex items-center gap-4 text-sm font-semibold text-[#121B52]/50">
+                <div className="h-[1px] flex-grow bg-[#f0f4f8]" />
+                o escribinos por acá
+                <div className="h-[1px] flex-grow bg-[#f0f4f8]" />
+              </div>
+            </ScrollReveal>
           </div>
-          <Card className="p-6 sm:p-8 shadow-lg bg-white text-primary">
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Nombre</FormLabel>
-                      <FormControl><Input placeholder="Tu nombre" {...field} className="bg-primary-foreground/20 text-primary placeholder:text-primary/60" /></FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email</FormLabel>
-                      <FormControl><Input placeholder="tu@email.com" type="email" {...field} className="bg-primary-foreground/20 text-primary placeholder:text-primary/60" /></FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Mensaje</FormLabel>
-                      <FormControl><Textarea placeholder="Contanos sobre tu proyecto..." {...field} rows={4} className="bg-primary-foreground/20 text-primary placeholder:text-primary/60" /></FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <Button type="submit" disabled={form.formState.isSubmitting} className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                  {form.formState.isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                  Enviar Mensaje
-                </Button>
-              </form>
-            </Form>
-          </Card>
+
+          <ScrollReveal direction="left" delay={200}>
+            <Card className="p-8 sm:p-10 shadow-2xl shadow-[#121B52]/10 bg-white border-none rounded-3xl relative overflow-hidden group">
+              {/* Subtle background gradient that appears on form interaction */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#f8fbfe] to-white opacity-0 group-focus-within:opacity-100 transition-opacity duration-700 pointer-events-none" />
+              
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 relative z-10">
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-bold text-[#121B52]">Nombre</FormLabel>
+                        <FormControl>
+                          <Input 
+                            placeholder="Tu nombre" 
+                            {...field} 
+                            className="bg-[#f8fbfe] border-[#f0f4f8] focus-visible:ring-[#121B52] focus-visible:border-[#121B52] text-[#121B52] placeholder:text-[#121B52]/40 rounded-xl h-12 transition-all duration-300" 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-bold text-[#121B52]">Email</FormLabel>
+                        <FormControl>
+                          <Input 
+                            placeholder="tu@email.com" 
+                            type="email" 
+                            {...field} 
+                            className="bg-[#f8fbfe] border-[#f0f4f8] focus-visible:ring-[#121B52] focus-visible:border-[#121B52] text-[#121B52] placeholder:text-[#121B52]/40 rounded-xl h-12 transition-all duration-300" 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-bold text-[#121B52]">Mensaje</FormLabel>
+                        <FormControl>
+                          <Textarea 
+                            placeholder="Contanos sobre tu proyecto..." 
+                            {...field} 
+                            rows={4} 
+                            className="bg-[#f8fbfe] border-[#f0f4f8] focus-visible:ring-[#121B52] focus-visible:border-[#121B52] text-[#121B52] placeholder:text-[#121B52]/40 rounded-xl resize-none transition-all duration-300" 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <Button 
+                    type="submit" 
+                    disabled={form.formState.isSubmitting} 
+                    className="w-full btn-press bg-[#121B52] text-[#B6D7F2] hover:bg-[#1a2766] h-14 rounded-xl text-lg mt-4 group/btn"
+                  >
+                    {form.formState.isSubmitting ? (
+                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                    ) : (
+                      <>
+                        Enviar Mensaje
+                        <Send className="ml-2 h-5 w-5 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                      </>
+                    )}
+                  </Button>
+                </form>
+              </Form>
+            </Card>
+          </ScrollReveal>
+
         </div>
       </div>
     </section>
