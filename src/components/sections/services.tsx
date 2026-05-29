@@ -1,60 +1,115 @@
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Palette, MonitorSmartphone, Megaphone, CandlestickChart } from "lucide-react";
+import { Palette, MonitorSmartphone, Megaphone, CandlestickChart, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 const services = [
   {
-    icon: <Palette className="w-10 h-10 text-primary" />,
+    icon: <Palette className="w-8 h-8 text-[#B6D7F2]" />,
     title: "Identidad de marca",
     description: "Logo, naming, paleta, storytelling. Tu marca no comienza con un logo, sino con una historia visual que impacta.",
   },
   {
-    icon: <MonitorSmartphone className="w-10 h-10 text-primary" />,
+    icon: <MonitorSmartphone className="w-8 h-8 text-[#B6D7F2]" />,
     title: "Presencia digital",
     description: "Web responsive, tienda online, apps. Tu página web es tu carta de presentación: debe proyectar profesionalismo y vender.",
   },
   {
-    icon: <Megaphone className="w-10 h-10 text-primary" />,
+    icon: <Megaphone className="w-8 h-8 text-[#B6D7F2]" />,
     title: "Marketing visual",
-    description: "“Diseños que detienen el scroll, generan conexión y posicionan tu marca.”",
+    description: "Diseños que detienen el scroll, generan conexión y posicionan tu marca en la mente de tus clientes.",
   },
   {
-    icon: <CandlestickChart className="w-10 h-10 text-primary" />,
+    icon: <CandlestickChart className="w-8 h-8 text-[#B6D7F2]" />,
     title: "Finanzas estratégicas",
-    description: "“Diseñamos para que tu negocio no solo se vea bien, sino que sea rentable.”",
+    description: "Diseñamos para que tu negocio no solo se vea bien, sino que sea rentable y escalable a largo plazo.",
   },
 ];
 
 export function Services() {
   return (
-    <section id="services" className="py-16 md:py-24 bg-gradient-to-r from-white to-primary-foreground text-primary">
-      <div className="container mx-auto max-w-7xl px-4 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 font-headline">Nuestros Servicios</h2>
-        <p className="text-lg max-w-3xl mx-auto mb-12">
-          Ofrecemos soluciones integrales para construir marcas fuertes, visibles y rentables.
-        </p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <section id="services" className="py-24 md:py-32 bg-[#121B52] text-white overflow-hidden relative">
+      {/* Decorative background grid */}
+      <div
+        className="absolute inset-0 opacity-[0.05]"
+        style={{
+          backgroundImage:
+            "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+        }}
+      />
+      
+      <div className="container mx-auto max-w-7xl px-4 relative z-10">
+        <div className="flex flex-col md:flex-row gap-12 justify-between items-end mb-16 md:mb-24">
+          <div className="max-w-2xl">
+            <ScrollReveal direction="up">
+              <h2 className="text-3xl md:text-5xl font-bold mb-6 font-headline tracking-tight">
+                Nuestros <span className="text-[#B6D7F2]">Servicios</span>
+              </h2>
+            </ScrollReveal>
+            <ScrollReveal direction="up" delay={150}>
+              <p className="text-lg md:text-xl text-[#B6D7F2]/80 leading-relaxed font-medium">
+                Ofrecemos soluciones integrales para construir marcas fuertes, visibles y rentables. No vendemos entregables, construimos activos.
+              </p>
+            </ScrollReveal>
+          </div>
+          <ScrollReveal direction="up" delay={300} className="hidden md:block">
+            <Button asChild size="lg" className="btn-press bg-[#B6D7F2] text-[#121B52] hover:bg-white rounded-full">
+              <Link href="#contact">Hablemos de tu marca</Link>
+            </Button>
+          </ScrollReveal>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-x-12 gap-y-16 lg:gap-y-24">
           {services.map((service, index) => (
-            <Card key={index} className="text-left flex flex-col h-full hover:shadow-lg transition-shadow duration-300 bg-white text-primary">
-              <CardHeader>
-                {service.icon}
-                <CardTitle className="pt-4 font-headline text-primary">{service.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                <p className="text-primary">{service.description}</p>
-              </CardContent>
-            </Card>
+            <ScrollReveal 
+              key={index} 
+              direction="up" 
+              delay={index * 150} 
+              className="group relative"
+            >
+              {/* Connector line for desktop to break the grid feel */}
+              {index % 2 === 0 && (
+                <div className="hidden md:block absolute top-12 left-full w-12 h-[1px] bg-white/10" />
+              )}
+              
+              <div className="flex flex-col sm:flex-row gap-6 lg:gap-8 items-start">
+                <div className="shrink-0 relative">
+                  <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center relative z-10 group-hover:scale-110 group-hover:bg-[#B6D7F2]/10 transition-all duration-300 ease-out-expo">
+                    {service.icon}
+                  </div>
+                  {/* Decorative glow behind icon */}
+                  <div className="absolute inset-0 bg-[#B6D7F2] blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-full" />
+                </div>
+                
+                <div className="flex flex-col h-full">
+                  <h3 className="text-2xl font-bold font-headline mb-3 text-white group-hover:text-[#B6D7F2] transition-colors duration-300">
+                    {service.title}
+                  </h3>
+                  <p className="text-[#B6D7F2]/70 leading-relaxed mb-6 flex-grow">
+                    {service.description}
+                  </p>
+                  
+                  <div className="mt-auto">
+                    <Link 
+                      href="#contact" 
+                      className="inline-flex items-center text-sm font-semibold text-white/60 group-hover:text-[#F4DEC6] transition-colors duration-300"
+                    >
+                      Solicitar paquete
+                      <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
           ))}
         </div>
-        <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
-          <Button asChild size="lg" className="bg-white text-primary hover:bg-gray-200">
-            <Link href="#contact">Solicitá tu paquete ideal</Link>
-          </Button>
-          <Button asChild size="lg" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90">
+
+        <ScrollReveal direction="up" delay={600} className="mt-16 md:hidden flex justify-center">
+          <Button asChild size="lg" className="btn-press bg-[#B6D7F2] text-[#121B52] hover:bg-white w-full sm:w-auto rounded-full">
             <Link href="#contact">Hablemos de tu marca</Link>
           </Button>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );
