@@ -1,6 +1,6 @@
 import { Github, Linkedin, Twitter, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { Logo } from "@/components/logo";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -21,7 +21,7 @@ export function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-4 flex flex-col gap-6">
             <Link href="/" className="btn-press inline-block w-fit">
-              <Logo className="h-auto w-32 text-white" />
+              <Image src="/assets/creatisvg.svg" alt="Creati Logo" width={120} height={30} />
             </Link>
             <p className="max-w-xs text-[#B6D7F2]/80 text-lg leading-relaxed">
               Tu marca de <span className="italic">invisible</span> a inolvidable.

@@ -144,12 +144,14 @@ export function Portfolio() {
                     {item.title}
                   </h3>
                   
+                  {/* 
                   <div className="mt-auto pt-2 border-t border-[#f0f4f8]">
                     <a href="#contact" className="inline-flex items-center text-sm font-bold text-[#121B52] hover:text-[#9B6F50] transition-colors group/link">
                       Ver caso completo 
                       <ArrowRight className="ml-2 w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" />
                     </a>
                   </div>
+                  */}
                 </div>
               </ScrollReveal>
             );

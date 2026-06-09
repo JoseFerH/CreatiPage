@@ -81,15 +81,16 @@ export function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0 animate-hero-fade-in"
+      <Link
+        href="#about"
+        className="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-2 opacity-0 animate-hero-fade-in cursor-pointer group"
         style={{ animationDelay: "800ms" }}
       >
-        <span className="text-xs font-medium text-[#121B52]/40 tracking-widest uppercase">
+        <span className="text-xs font-medium text-[#121B52]/40 group-hover:text-[#121B52]/80 tracking-widest uppercase transition-colors duration-300">
           Descubrí más
         </span>
-        <ChevronDown className="h-5 w-5 text-[#121B52]/40 animate-scroll-bounce" />
-      </div>
+        <ChevronDown className="h-5 w-5 text-[#121B52]/40 group-hover:text-[#121B52]/80 animate-scroll-bounce transition-colors duration-300" />
+      </Link>
     </section>
   );
 }
