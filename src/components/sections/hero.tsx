@@ -6,7 +6,7 @@ import { ChevronDown } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center text-center overflow-hidden bg-[#f8fbfe]">
+    <section className="relative w-full min-h-screen flex items-start justify-center text-center overflow-hidden bg-[#f8fbfe] pt-36 md:pt-44 pb-36">
       {/* Decorative floating orbs */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div
@@ -34,15 +34,9 @@ export function Hero() {
         <h1
           className="hero-stagger text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6 leading-[1.1] text-[#121B52] font-headline opacity-0 animate-hero-fade-in"
         >
-          Tu marca de{" "}
+          Tu marca merece ser vista, valorada y{" "}
           <span className="relative inline-block">
-            <span className="transition-all duration-300 hover:opacity-0">
-              invisible
-            </span>
-          </span>{" "}
-          a{" "}
-          <span className="relative inline-block">
-            inolvidable.
+            recordada.
             <span
               className="absolute left-0 bottom-0 h-[3px] w-full bg-[#B6D7F2] origin-left scale-x-0"
               style={{ animation: "underline-reveal 0.6s cubic-bezier(0.23, 1, 0.32, 1) 1s forwards" }}
@@ -51,12 +45,11 @@ export function Hero() {
         </h1>
 
         <p
-          className="hero-stagger text-lg md:text-xl max-w-2xl mx-auto mb-10 text-[#121B52]/70 leading-relaxed opacity-0 animate-hero-fade-in"
+          className="hero-stagger text-lg md:text-xl max-w-2xl mx-auto mb-32 text-[#121B52]/70 leading-relaxed opacity-0 animate-hero-fade-in"
           style={{ animationDelay: "200ms" }}
         >
-          Diseñamos tu identidad visual, estructuramos tu negocio y proyectamos
-          tu esencia para que crezcas con propósito. Diseño con estrategia.
-          Marca con alma.
+          En Creati, diseñamos tu identidad visual, estructuramos tu negocio y proyectamos tu esencia para que crezcas con propósito.
+          <span className="block mt-4 font-semibold text-[#9B6F50] text-xl">Diseño con estrategia. Marca con alma.</span>
         </p>
 
         <div
@@ -68,14 +61,14 @@ export function Hero() {
             size="lg"
             className="btn-press bg-[#121B52] text-[#B6D7F2] hover:bg-[#1a2766] text-base px-8 py-6 rounded-lg shadow-lg shadow-[#121B52]/20 animate-pulse-subtle"
           >
-            <Link href="#contact">Agenda tu asesoría inicial</Link>
+            <Link href="#services">Conocé nuestros servicios</Link>
           </Button>
           <Button
             asChild
             size="lg"
             className="btn-press bg-white text-[#121B52] border-2 border-[#121B52]/15 hover:border-[#121B52]/30 hover:bg-[#f0f4f8] text-base px-8 py-6 rounded-lg"
           >
-            <Link href="#services">Conoce nuestros servicios</Link>
+            <Link href="#contact">Agendá tu asesoría inicial</Link>
           </Button>
         </div>
       </div>
@@ -83,13 +76,13 @@ export function Hero() {
       {/* Scroll indicator */}
       <Link
         href="#about"
-        className="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-2 opacity-0 animate-hero-fade-in cursor-pointer group"
+        className="absolute bottom-10 left-0 right-0 flex flex-col items-center gap-3 opacity-0 animate-hero-fade-in cursor-pointer group"
         style={{ animationDelay: "800ms" }}
       >
-        <span className="text-xs font-medium text-[#121B52]/40 group-hover:text-[#121B52]/80 tracking-widest uppercase transition-colors duration-300">
+        <span className="text-sm font-semibold text-[#121B52]/50 group-hover:text-[#121B52]/90 tracking-widest uppercase transition-colors duration-300">
           Descubrí más
         </span>
-        <ChevronDown className="h-5 w-5 text-[#121B52]/40 group-hover:text-[#121B52]/80 animate-scroll-bounce transition-colors duration-300" />
+        <ChevronDown className="h-8 w-8 text-[#121B52]/50 group-hover:text-[#121B52]/90 animate-scroll-bounce transition-colors duration-300" />
       </Link>
     </section>
   );

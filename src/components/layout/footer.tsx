@@ -5,16 +5,6 @@ import Image from "next/image";
 export function Footer() {
   return (
     <footer className="bg-[#121B52] text-white pt-20 pb-10 border-t border-white/10 relative overflow-hidden">
-      {/* Decorative background grid */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
-      
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
           
@@ -62,7 +52,7 @@ export function Footer() {
 
         </div>
 
-        {/* Bottom Bar */}
+        {/* Bottom Bar - Temporarily commented out
         <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10 gap-4">
           <p className="text-[#B6D7F2]/50 text-sm">
             &copy; {new Date().getFullYear()} Creati Growth Platform. Todos los derechos reservados.
@@ -72,6 +62,7 @@ export function Footer() {
             <Link href="#" className="text-[#B6D7F2]/50 hover:text-[#B6D7F2] text-sm transition-colors duration-200">Política de Privacidad</Link>
           </div>
         </div>
+        */}
       </div>
       
       {/* Decorative bottom blur */}

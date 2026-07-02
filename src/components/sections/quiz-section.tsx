@@ -11,10 +11,6 @@ export function QuizSection() {
 
       <div className="container mx-auto max-w-4xl px-4 relative z-10">
         <ScrollReveal direction="up" className="text-center mb-16">
-          <div className="inline-flex items-center justify-center p-3 bg-white/5 rounded-2xl mb-6 border border-white/10 relative group">
-            <Lightbulb className="h-8 w-8 text-[#F4DEC6] group-hover:scale-110 transition-transform duration-300" />
-            <Sparkles className="absolute -top-2 -right-2 h-5 w-5 text-[#B6D7F2] animate-pulse" />
-          </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-4 font-headline tracking-tight">
             ¿Qué está <span className="text-[#F4DEC6]">frenando</span> tu marca?
           </h2>

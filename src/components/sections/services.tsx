@@ -17,28 +17,18 @@ const services = [
   {
     icon: <Megaphone className="w-8 h-8 text-[#B6D7F2]" />,
     title: "Marketing visual",
-    description: "Diseños que detienen el scroll, generan conexión y posicionan tu marca en la mente de tus clientes.",
+    description: "Diseños que detienen el scroll, generan conexión y posicionan tu marca.",
   },
   {
     icon: <CandlestickChart className="w-8 h-8 text-[#B6D7F2]" />,
     title: "Finanzas estratégicas",
-    description: "Diseñamos para que tu negocio no solo se vea bien, sino que sea rentable y escalable a largo plazo.",
+    description: "Diseñamos para que tu negocio no solo se vea bien, sino que sea rentable.",
   },
 ];
 
 export function Services() {
   return (
     <section id="services" className="py-24 md:py-32 bg-[#121B52] text-white overflow-hidden relative">
-      {/* Decorative background grid */}
-      <div
-        className="absolute inset-0 opacity-[0.05]"
-        style={{
-          backgroundImage:
-            "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
-      
       <div className="container mx-auto max-w-7xl px-4 relative z-10">
         <div className="flex flex-col md:flex-row gap-12 justify-between items-end mb-16 md:mb-24">
           <div className="max-w-2xl">
@@ -53,11 +43,6 @@ export function Services() {
               </p>
             </ScrollReveal>
           </div>
-          <ScrollReveal direction="up" delay={300} className="hidden md:block">
-            <Button asChild size="lg" className="btn-press bg-[#B6D7F2] text-[#121B52] hover:bg-white rounded-full">
-              <Link href="#contact">Hablemos de tu marca</Link>
-            </Button>
-          </ScrollReveal>
         </div>
 
         <div className="grid md:grid-cols-2 gap-x-12 gap-y-16 lg:gap-y-24">
@@ -90,23 +75,17 @@ export function Services() {
                     {service.description}
                   </p>
                   
-                  <div className="mt-auto">
-                    <Link 
-                      href="#contact" 
-                      className="inline-flex items-center text-sm font-semibold text-white/60 group-hover:text-[#F4DEC6] transition-colors duration-300"
-                    >
-                      Solicitar paquete
-                      <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
-                    </Link>
-                  </div>
                 </div>
               </div>
             </ScrollReveal>
           ))}
         </div>
 
-        <ScrollReveal direction="up" delay={600} className="mt-16 md:hidden flex justify-center">
-          <Button asChild size="lg" className="btn-press bg-[#B6D7F2] text-[#121B52] hover:bg-white w-full sm:w-auto rounded-full">
+        <ScrollReveal direction="up" delay={600} className="mt-16 flex flex-col sm:flex-row gap-4 justify-center">
+          <Button asChild size="lg" className="btn-press bg-white text-[#121B52] border-2 border-white hover:bg-transparent hover:text-white w-full sm:w-auto rounded-full px-8 py-6 text-lg font-semibold transition-colors duration-300">
+            <Link href="#contact">Solicitá tu paquete ideal</Link>
+          </Button>
+          <Button asChild size="lg" className="btn-press bg-[#B6D7F2] text-[#121B52] hover:bg-white w-full sm:w-auto rounded-full px-8 py-6 text-lg font-semibold transition-colors duration-300">
             <Link href="#contact">Hablemos de tu marca</Link>
           </Button>
         </ScrollReveal>

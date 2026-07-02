@@ -16,7 +16,7 @@ const testimonials = [
   {
     name: "Marcela G.",
     title: "Emprendedora",
-    quote: "Después de trabajar con Creati, mis ventas aumentaron y por fin me siento orgullosa de cómo se ve mi negocio. El proceso fue claro desde el día uno.",
+    quote: "Después de trabajar con Creati, mis ventas aumentaron y por fin me siento orgullosa de cómo se ve mi negocio.",
     avatar: "https://picsum.photos/seed/avatar1/100/100",
   },
   {
@@ -35,7 +35,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="py-24 md:py-32 bg-[#f8fbfe] text-[#121B52] relative overflow-hidden">
+    <section id="testimonials" className="pt-16 pb-24 md:pt-20 md:pb-32 bg-[#f8fbfe] text-[#121B52] relative overflow-hidden">
       {/* Decorative large quote */}
       <div className="absolute top-10 left-10 md:top-20 md:left-20 text-[#B6D7F2] opacity-20 rotate-[-10deg]">
         <Quote size={200} />
@@ -49,7 +49,7 @@ export function Testimonials() {
             </h2>
           </ScrollReveal>
           <ScrollReveal direction="up" delay={150}>
-            <p className="text-lg md:text-xl mt-4 max-w-2xl mx-auto text-[#121B52]/70 font-medium">
+            <p className="text-2xl md:text-3xl mt-6 max-w-3xl mx-auto text-[#121B52]/70 font-medium">
               La confianza de nuestros clientes es nuestro mayor logro.
             </p>
           </ScrollReveal>

@@ -106,7 +106,7 @@ function ComparisonSlider({ beforeImg, afterImg, title }: { beforeImg: any, afte
 
 export function Portfolio() {
   return (
-    <section id="portfolio" className="py-24 md:py-32 bg-white text-[#121B52] overflow-hidden">
+    <section id="portfolio" className="pt-12 pb-24 md:pt-16 md:pb-32 bg-white text-[#121B52] overflow-hidden">
       <div className="container mx-auto max-w-7xl px-4">
         <div className="text-center mb-16 md:mb-24 max-w-3xl mx-auto">
           <ScrollReveal direction="up">
@@ -116,7 +116,8 @@ export function Portfolio() {
           </ScrollReveal>
           <ScrollReveal direction="up" delay={150}>
             <p className="text-lg md:text-xl text-[#121B52]/70 font-medium leading-relaxed">
-              No es magia, es estrategia y diseño trabajando juntos. Arrastrá el control deslizante para ver el antes y el después de marcas reales.
+              Aquí te mostramos cómo lo logramos.
+              <span className="block mt-2">Arrastrá el control deslizante para ver el antes y el después de marcas reales.</span>
             </p>
           </ScrollReveal>
         </div>
