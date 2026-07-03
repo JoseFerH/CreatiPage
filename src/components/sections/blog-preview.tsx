@@ -1,32 +1,14 @@
+"use client";
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-
-const articles = {
-  blog: [
-    { title: "5 señales de que tu marca necesita un rediseño urgente", link: "#" },
-    { title: "¿Por qué tu negocio no vende si se ve bien?", link: "#" },
-    { title: "Cómo estructurar tu marca para escalar sin perder esencia", link: "#" },
-  ],
-  finanzas: [
-    { title: "Ebook: Guía de Precios para Creativos", link: "#" },
-    { title: "Plantilla: Flujo de Caja para Freelancers", link: "#" },
-    { title: "Escalabilidad: ¿Cuándo y cómo invertir en tu marca?", link: "#"},
-  ],
-  marketing: [
-    { title: "Ebook: Marketing Visual que Vende", link: "#" },
-    { title: "Plantilla: Calendario de Contenidos para Redes", link: "#" },
-    { title: "Anuncios que convierten: Guía de inicio", link: "#"},
-  ],
-  diseño: [
-    { title: "Ebook: Storytelling para Marcas con Alma", link: "#" },
-    { title: "Plantilla: Moodboard de Identidad Visual", link: "#" },
-    { title: "Psicología del color en branding", link: "#" },
-  ],
-};
-
+import { useSettings } from "@/context/SettingsContext";
 export function BlogPreview() {
+  const { settings } = useSettings();
+  const articles = settings.blog;
+
   return (
     <section id="blog" className="py-24 md:py-32 bg-[#f8fbfe] text-[#121B52] border-t border-[#f0f4f8]">
       <div className="container mx-auto max-w-7xl px-4">

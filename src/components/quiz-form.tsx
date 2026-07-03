@@ -13,6 +13,8 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
+import { db } from "@/lib/firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 const QuizInputSchema = z.object({
   question1: z.enum([
@@ -150,12 +152,38 @@ export function QuizForm() {
     setIsLoading(true);
     setFinalResult(null);
     
-    // Simulate processing time
-    setTimeout(() => {
+    try {
       const category = calculateResult(data);
-      setFinalResult(resultsData[category]);
+      
+      // Save to Firebase
+      await addDoc(collection(db, "leads_quiz"), {
+        respuestas: {
+          q1: data.question1,
+          q2: data.question2,
+          q3: data.question3,
+          q4: data.question4,
+          quiere_guia: data.question5
+        },
+        email: data.email || null,
+        resultado_categoria: category,
+        fecha: new Date().toISOString()
+      });
+
+      // Simulate a small delay for better UX even though save is fast
+      setTimeout(() => {
+        setFinalResult(resultsData[category]);
+        setIsLoading(false);
+      }, 500);
+      
+    } catch (error) {
+      console.error("Error al guardar quiz:", error);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Hubo un problema procesando tus respuestas. Por favor, intentá de nuevo.",
+      });
       setIsLoading(false);
-    }, 1500);
+    }
   };
 
   if (!hasStarted) {

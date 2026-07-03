@@ -1,8 +1,13 @@
-import { Github, Linkedin, Twitter, ArrowRight } from "lucide-react";
+"use client";
+
+import { Github, Linkedin, Twitter, ArrowRight, Instagram, Facebook } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { useSettings } from "@/context/SettingsContext";
 
 export function Footer() {
+  const { settings } = useSettings();
+  
   return (
     <footer className="bg-[#121B52] text-white pt-20 pb-10 border-t border-white/10 relative overflow-hidden">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
@@ -17,18 +22,18 @@ export function Footer() {
               Tu marca de <span className="italic">invisible</span> a inolvidable.
             </p>
             <div className="flex items-center space-x-5 mt-2">
-              <Link href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#B6D7F2] hover:bg-white hover:text-[#121B52] transition-all duration-300 btn-press">
-                <Twitter className="h-4 w-4" />
-                <span className="sr-only">Twitter</span>
-              </Link>
-              <Link href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#B6D7F2] hover:bg-white hover:text-[#121B52] transition-all duration-300 btn-press">
-                <Github className="h-4 w-4" />
-                <span className="sr-only">GitHub</span>
-              </Link>
-              <Link href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#B6D7F2] hover:bg-white hover:text-[#121B52] transition-all duration-300 btn-press">
+              <a href={settings.socials.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#B6D7F2] hover:bg-white hover:text-[#121B52] transition-all duration-300 btn-press">
+                <Instagram className="h-4 w-4" />
+                <span className="sr-only">Instagram</span>
+              </a>
+              <a href={settings.socials.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#B6D7F2] hover:bg-white hover:text-[#121B52] transition-all duration-300 btn-press">
+                <Facebook className="h-4 w-4" />
+                <span className="sr-only">Facebook</span>
+              </a>
+              <a href={settings.socials.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#B6D7F2] hover:bg-white hover:text-[#121B52] transition-all duration-300 btn-press">
                 <Linkedin className="h-4 w-4" />
                 <span className="sr-only">LinkedIn</span>
-              </Link>
+              </a>
             </div>
           </div>
 
